@@ -21,6 +21,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.sagittarius.dev.googleip.DetectServices1"
+            android:process=":detect1" >
+        </service>
+        <service
+            android:name="com.sagittarius.dev.googleip.DetectServices2"
+            android:process=":detect1" >
+        </service>
+        <service
+            android:name="com.sagittarius.dev.googleip.DetectServices3"
+            android:process=":detect1" >
+        </service>
     </application>
 
 </manifest>
