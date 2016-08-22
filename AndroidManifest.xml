@@ -13,26 +13,32 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:name="sagittarius.dev.googleip.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="sagittarius.dev.googleip.DetectActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
+        </activity>
 
         <service
-            android:name="com.sagittarius.dev.googleip.DetectServices1"
+            android:name="sagittarius.dev.googleip.DetectServices1"
             android:process=":detect1" >
         </service>
         <service
-            android:name="com.sagittarius.dev.googleip.DetectServices2"
-            android:process=":detect1" >
+            android:name="sagittarius.dev.googleip.DetectServices2"
+            android:process=":detect2" >
         </service>
         <service
-            android:name="com.sagittarius.dev.googleip.DetectServices3"
-            android:process=":detect1" >
+            android:name="sagittarius.dev.googleip.DetectServices3"
+            android:process=":detect3" >
         </service>
     </application>
 
