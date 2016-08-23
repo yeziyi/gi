@@ -1,6 +1,7 @@
 package sagittarius.dev.googleip;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +17,9 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,
+						DetectActivity.class);
+				MainActivity.this.startActivity(intent);
 
 			}
 		});
