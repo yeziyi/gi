@@ -11,4 +11,9 @@ public class DetectServices3 extends Service {
 		return null;
 	}
 
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		// TODO Auto-generated method stub
+		return super.onStartCommand(intent, flags, startId);
+	}
 }
