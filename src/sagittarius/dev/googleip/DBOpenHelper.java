@@ -17,7 +17,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE IF NOT EXISTS detect"
-				+ "(_id LONG PRIMARY KEY AUTOINCREMENT, ip TEXT, time LONG, consuming LONG)");
+				+ "(_id INTEGER PRIMARY KEY AUTOINCREMENT, ip TEXT, time LONG, consuming LONG)");
 	}
 
 	@Override

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:padding="10dp"
-        android:text="1.2.3.4  检索失败"
+        android:text=""
         android:textColor="@android:color/black" />
 
     <Button

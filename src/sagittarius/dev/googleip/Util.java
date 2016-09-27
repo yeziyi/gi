@@ -104,7 +104,7 @@ public class Util {
 			String line = "";
 			while ((line = bufReader.readLine()) != null) {
 				line = line.trim();
-				if (TextUtils.isEmpty(line)) {
+				if (!TextUtils.isEmpty(line)) {
 					list.add(line);
 				}
 			}
@@ -145,7 +145,7 @@ public class Util {
 			String line = "";
 			while ((line = bufReader.readLine()) != null) {
 				line = line.trim();
-				if (TextUtils.isEmpty(line)) {
+				if (!TextUtils.isEmpty(line)) {
 					list.add(line);
 				}
 			}

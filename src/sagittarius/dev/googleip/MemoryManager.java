@@ -109,8 +109,8 @@ public class MemoryManager {
 	}
 
 	public synchronized List<Record> querySuccess() {
-		Cursor cursor = db.query("detect", null, null, null, null, "time ASC",
-				null);
+		Cursor cursor = db.query("detect", null, null, null, null, null,
+				"time ASC");
 		List<Record> list = new ArrayList<Record>();
 		while (cursor.moveToNext()) {
 			Record record = new Record();
