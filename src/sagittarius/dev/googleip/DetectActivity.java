@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -101,18 +102,25 @@ public class DetectActivity extends Activity {
 					list3.add(allIp.get(i));
 				}
 			}
-			Intent intent1 = new Intent(getApplicationContext(),
-					DetectServices1.class);
-			intent1.putStringArrayListExtra(KEY_IP_LIST, list1);
-			getApplicationContext().startService(intent1);
-			Intent intent2 = new Intent(getApplicationContext(),
-					DetectServices2.class);
-			intent2.putStringArrayListExtra(KEY_IP_LIST, list2);
-			getApplicationContext().startService(intent2);
-			Intent intent3 = new Intent(getApplicationContext(),
-					DetectServices3.class);
-			intent3.putStringArrayListExtra(KEY_IP_LIST, list3);
-			getApplicationContext().startService(intent3);
+			startService(list1, DetectServices1.class);
+			startService(list2, DetectServices2.class);
+			startService(list3, DetectServices3.class);
+		}
+	}
+
+	private void startService(List<String> list, Class<?> cls) {
+		if (list == null) {
+			return;
+		}
+		ArrayList<String> slist = new ArrayList<String>();
+		for (int i = 0; i < list.size(); i++) {
+			slist.add(list.get(i));
+			if (i != 0 && (i % 2000 == 0 || i == list.size() - 1)) {
+				Intent intent = new Intent(getApplicationContext(), cls);
+				intent.putStringArrayListExtra(KEY_IP_LIST, slist);
+				getApplicationContext().startService(intent);
+				slist = new ArrayList<String>();
+			}
 		}
 	}
 
@@ -139,7 +147,7 @@ public class DetectActivity extends Activity {
 		}
 
 		@Override
-		public Object getItem(int position) {
+		public Record getItem(int position) {
 			return mSuccessList.get(position);
 		}
 
@@ -153,6 +161,11 @@ public class DetectActivity extends Activity {
 			if (convertView == null) {
 				convertView = mInflater.inflate(R.layout.detect_item, null);
 			}
+			Record record = getItem(position);
+			TextView text = (TextView) convertView.findViewById(R.id.text);
+			Button copy = (Button) convertView.findViewById(R.id.copy);
+			Button open = (Button) convertView.findViewById(R.id.open);
+			text.setText(record.ip + "  " + record.time);
 			return convertView;
 		}
 	}
