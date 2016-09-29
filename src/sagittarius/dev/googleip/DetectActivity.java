@@ -107,11 +107,11 @@ public class DetectActivity extends Activity {
 			getApplicationContext().startService(intent1);
 			Intent intent2 = new Intent(getApplicationContext(),
 					DetectServices2.class);
-			intent1.putStringArrayListExtra(KEY_IP_LIST, list2);
+			intent2.putStringArrayListExtra(KEY_IP_LIST, list2);
 			getApplicationContext().startService(intent2);
 			Intent intent3 = new Intent(getApplicationContext(),
 					DetectServices3.class);
-			intent1.putStringArrayListExtra(KEY_IP_LIST, list3);
+			intent3.putStringArrayListExtra(KEY_IP_LIST, list3);
 			getApplicationContext().startService(intent3);
 		}
 	}
