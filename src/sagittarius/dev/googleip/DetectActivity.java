@@ -81,7 +81,7 @@ public class DetectActivity extends Activity {
 		IntentFilter filter1 = new IntentFilter(SUCCESS_ACTION);
 		registerReceiver(mSuccessReceiver, filter1);
 		IntentFilter filter2 = new IntentFilter(FAIL_ACTION);
-		registerReceiver(mSuccessReceiver, filter2);
+		registerReceiver(mFailReceiver, filter2);
 		initData();
 	}
 
