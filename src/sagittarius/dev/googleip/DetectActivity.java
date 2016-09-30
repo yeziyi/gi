@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -161,11 +162,30 @@ public class DetectActivity extends Activity {
 			if (convertView == null) {
 				convertView = mInflater.inflate(R.layout.detect_item, null);
 			}
-			Record record = getItem(position);
+			final Record record = getItem(position);
 			TextView text = (TextView) convertView.findViewById(R.id.text);
 			Button copy = (Button) convertView.findViewById(R.id.copy);
 			Button open = (Button) convertView.findViewById(R.id.open);
-			text.setText(record.ip + "  " + record.time);
+			text.setText(record.ip);
+			copy.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+				}
+			});
+			open.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					try {
+						Uri uri = Uri.parse("https://" + record.ip);
+						Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+						startActivity(intent);
+					} catch (Exception e) {
+					}
+				}
+			});
 			return convertView;
 		}
 	}
