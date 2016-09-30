@@ -178,12 +178,7 @@ public class DetectActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
-					try {
-						Uri uri = Uri.parse("https://" + record.ip);
-						Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-						startActivity(intent);
-					} catch (Exception e) {
-					}
+					// TODO
 				}
 			});
 			return convertView;
