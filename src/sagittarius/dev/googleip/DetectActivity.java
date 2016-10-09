@@ -5,11 +5,14 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +22,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetectActivity extends Activity {
 
@@ -32,6 +36,7 @@ public class DetectActivity extends Activity {
 	private List<Record> mSuccessList = new ArrayList<Record>();
 	private LayoutInflater mInflater;
 	private TextView mFailText;
+	private Handler mHandler = new Handler(Looper.getMainLooper());
 
 	private BroadcastReceiver mSuccessReceiver = new BroadcastReceiver() {
 
@@ -40,8 +45,19 @@ public class DetectActivity extends Activity {
 			if (intent != null) {
 				Record record = (Record) intent.getSerializableExtra(KEY_IP);
 				if (record != null) {
+					if (mListView.getLastVisiblePosition() >= mAdapter
+							.getCount() - 1) {
+						mHandler.post(new Runnable() {
+
+							@Override
+							public void run() {
+								mListView.setSelection(mAdapter.getCount());
+							}
+						});
+					}
 					mSuccessList.add(record);
 					mAdapter.notifyDataSetChanged();
+
 				}
 			}
 		}
@@ -171,7 +187,15 @@ public class DetectActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					ClipData clip = ClipData.newPlainText(record.ip + "",
+							record.ip + "");
+					ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+					clipboard.setPrimaryClip(clip);
+					Toast.makeText(
+							getApplicationContext(),
+							getApplicationContext().getText(
+									R.string.copysuccess), Toast.LENGTH_SHORT)
+							.show();
 				}
 			});
 			open.setOnClickListener(new OnClickListener() {
