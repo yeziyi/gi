@@ -95,6 +95,7 @@ public class DetectActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				// TODO
 			}
 		});
 		IntentFilter filter1 = new IntentFilter(SUCCESS_ACTION);
