@@ -87,6 +87,7 @@ public class DetectActivity extends Activity {
 		setContentView(R.layout.detect_layout);
 		mInflater = LayoutInflater.from(this);
 		mListView = (ListView) findViewById(R.id.listview);
+		mListView.setEmptyView(findViewById(R.id.progressBar));
 		mAdapter = new DetectAdapter();
 		mListView.setAdapter(mAdapter);
 		mFailText = (TextView) findViewById(R.id.failip);
