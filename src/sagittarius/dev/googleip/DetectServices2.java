@@ -56,9 +56,10 @@ public class DetectServices2 extends Service {
 
 	@Override
 	public void onDestroy() {
+		Log.e("test", "2 onDestroy");
 		// 停掉所有线程
 		if (mExecutor != null) {
-			mExecutor.shutdown();
+			mExecutor.shutdownNow();
 		}
 		super.onDestroy();
 	}

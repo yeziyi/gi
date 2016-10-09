@@ -4,5 +4,6 @@
     <string name="app_name">GoogleIp</string>
     <string name="detectfail">检索失败</string>
     <string name="copysuccess">复制成功</string>
+    <string name="stopdetect">已停止</string>
 
 </resources>

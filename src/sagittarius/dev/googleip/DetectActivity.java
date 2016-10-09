@@ -95,7 +95,23 @@ public class DetectActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO
+				try {
+					unregisterReceiver(mSuccessReceiver);
+				} catch (Exception e) {
+				}
+				try {
+					unregisterReceiver(mFailReceiver);
+				} catch (Exception e) {
+				}
+				stopService(new Intent(DetectActivity.this,
+						DetectServices1.class));
+				stopService(new Intent(DetectActivity.this,
+						DetectServices2.class));
+				stopService(new Intent(DetectActivity.this,
+						DetectServices3.class));
+				Toast.makeText(getApplicationContext(),
+						getApplicationContext().getText(R.string.stopdetect),
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 		IntentFilter filter1 = new IntentFilter(SUCCESS_ACTION);
@@ -150,8 +166,14 @@ public class DetectActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
-		unregisterReceiver(mSuccessReceiver);
-		unregisterReceiver(mFailReceiver);
+		try {
+			unregisterReceiver(mSuccessReceiver);
+		} catch (Exception e) {
+		}
+		try {
+			unregisterReceiver(mFailReceiver);
+		} catch (Exception e) {
+		}
 		stopService(new Intent(this, DetectServices1.class));
 		stopService(new Intent(this, DetectServices2.class));
 		stopService(new Intent(this, DetectServices3.class));
