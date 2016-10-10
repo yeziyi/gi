@@ -45,13 +45,10 @@ public class MemoryManager {
 			return;
 		}
 		// 没有就插入
-		db.beginTransaction();
 		try {
 			db.insert("detect", null, cv);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			db.endTransaction();
 		}
 		// 超过500个就删除超出范围的
 		int count = getCount();

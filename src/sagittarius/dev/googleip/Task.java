@@ -26,7 +26,6 @@ public class Task implements Runnable {
 		record.time = System.currentTimeMillis();
 
 		if (good) {
-			// TODO 如何保存数据
 			Intent intent = new Intent(DetectActivity.SUCCESS_ACTION);
 			intent.putExtra(DetectActivity.KEY_IP, record);
 			mContext.sendBroadcast(intent);

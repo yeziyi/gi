@@ -44,6 +44,8 @@ public class DetectActivity extends Activity {
 		public void onReceive(Context context, Intent intent) {
 			if (intent != null) {
 				Record record = (Record) intent.getSerializableExtra(KEY_IP);
+				MemoryManager.getInstance(getApplicationContext()).addOrUpdate(
+						record);
 				if (record != null) {
 					if (mListView.getLastVisiblePosition() >= mAdapter
 							.getCount() - 1) {
