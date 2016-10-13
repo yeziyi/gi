@@ -208,7 +208,8 @@ public class DetectActivity extends Activity {
 			TextView text = (TextView) convertView.findViewById(R.id.text);
 			Button copy = (Button) convertView.findViewById(R.id.copy);
 			Button open = (Button) convertView.findViewById(R.id.open);
-			text.setText(record.ip);
+			text.setText("(" + (position + 1) + ")     " + record.ip + "   "
+					+ getApplicationContext().getString(R.string.detectsuccess));
 			copy.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -219,9 +220,11 @@ public class DetectActivity extends Activity {
 					clipboard.setPrimaryClip(clip);
 					Toast.makeText(
 							getApplicationContext(),
-							getApplicationContext().getText(
-									R.string.copysuccess), Toast.LENGTH_SHORT)
-							.show();
+							record.ip
+									+ " "
+									+ getApplicationContext().getText(
+											R.string.copysuccess),
+							Toast.LENGTH_SHORT).show();
 				}
 			});
 			open.setOnClickListener(new OnClickListener() {

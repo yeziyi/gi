@@ -5,5 +5,6 @@
     <string name="detectfail">检索失败</string>
     <string name="copysuccess">复制成功</string>
     <string name="stopdetect">已停止</string>
+    <string name="detectsuccess">检索成功</string>
 
 </resources>
